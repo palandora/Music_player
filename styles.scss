@@ -32,13 +32,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #fafafa;
     font-family: $fontFamily;
 }
 
 
 .player_container{
     background-color: white;
+    box-shadow: 0 0 1px 1px $divider;
     width: 60%;
     border-radius: 8px;
 }
@@ -97,6 +98,9 @@ body{
                 margin-bottom: 8px;
                 span:last-child{
                     color: $col_sublines;
+                    &::before{
+                        content:"-"
+                    }
                 }
             }
             .progressind{

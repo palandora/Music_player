@@ -18,12 +18,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #f0f0f0;
+  background-color: #fafafa;
   font-family: "Lato", sans-serif;
 }
 
 .player_container {
   background-color: white;
+  -webkit-box-shadow: 0 0 1px 1px #efefef;
+          box-shadow: 0 0 1px 1px #efefef;
   width: 60%;
   border-radius: 8px;
 }
@@ -116,6 +118,10 @@ body {
 
 .current_track .track_details .progressbar .labels span:last-child {
   color: #8f8f8f;
+}
+
+.current_track .track_details .progressbar .labels span:last-child::before {
+  content: "-";
 }
 
 .current_track .track_details .progressbar .progressind {
