@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +19,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #f0f0f0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .player_container {
@@ -57,8 +57,8 @@ body {
 .current_track .cover img {
   height: 100%;
   border-radius: 8px;
-  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .current_track .track_details {
@@ -78,8 +78,8 @@ body {
 }
 
 .current_track .track_details .content .title, .current_track .track_details .content .artist {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 18px;
+  line-height: 22px;
 }
 
 .current_track .track_details .content .title {
@@ -87,7 +87,7 @@ body {
 }
 
 .current_track .track_details .content .artist {
-  font-weight: 500;
+  font-weight: 400;
   color: #8f8f8f;
 }
 
@@ -108,11 +108,13 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
   margin-bottom: 8px;
 }
 
-.current_track .track_details .progressbar .labels span::last-child {
+.current_track .track_details .progressbar .labels span:last-child {
   color: #8f8f8f;
 }
 
@@ -155,8 +157,9 @@ body {
       -ms-flex-align: center;
           align-items: center;
   padding: 16px;
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
 }
 
 .track .cover {
@@ -166,8 +169,8 @@ body {
 .track .cover img {
   height: 100%;
   border-radius: 8px;
-  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .track .content {
@@ -182,13 +185,16 @@ body {
   margin-left: 16px;
 }
 
-.track .content .title {
-  font-weight: 700;
+.track .content .artist {
+  color: #8f8f8f;
 }
 
-.track .content .artist {
-  font-weight: 500;
+.track .total_time {
   color: #8f8f8f;
+}
+
+.selected {
+  background-color: #f5f5f5;
 }
 
 .controls {
@@ -212,4 +218,15 @@ body {
 
 .controls .controls_center span {
   padding: 0 8px;
+}
+
+.footer {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: .15px;
+  font-weight: 400;
+  color: #8f8f8f;
+  padding: 16px;
+  background-color: #f5f5f5;
+  border-radius: 0 0 8px 8px;
 }

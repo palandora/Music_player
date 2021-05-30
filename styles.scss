@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
-$fontFamily: 'Roboto', sans-serif;
-$headings: 16px;
-$body_text: 14px;
+$fontFamily: 'Lato', sans-serif;
+$headings: 18px;
+$body_text: 15px;
 $caption: 12px;
 $bold: 700;
-$medium: 500;
-$line_height_headings: 20px;
-$line_height_body: 18px;
+$medium: 400;
+$line_height_headings: 22px;
+$line_height_body: 20px;
 
 $col_sublines: #8f8f8f;
-$cover_shadow: 0 4px 12px rgba(0,0,0,0.25);
+$cover_shadow: 0 4px 12px rgba(0,0,0,0.08);
 $col_highlight: #f5f5f5;
 $col_accent: #6b8cff;
 $divider: #efefef;
+
+@mixin setFont ($size, $line_height) {
+    font-size: $size;
+    line-height: $line_height;
+}
 
 *{
     margin: 0;
@@ -70,10 +75,7 @@ body{
             padding-bottom: 8px;
 
             .title, .artist{
-                font: {
-                    size: $headings;
-                }
-                line-height: $line_height_headings;
+                @include setFont($headings, $line_height_headings);
             }
             .title{
                 font-weight: $bold;
@@ -90,9 +92,10 @@ body{
             .labels{
                 display: flex;
                 justify-content: space-between;
-                font-size: $body_text;
+                @include setFont($body_text,$line_height_body);
+                font-weight: $medium ;
                 margin-bottom: 8px;
-                span::last-child{
+                span:last-child{
                     color: $col_sublines;
                 }
             }
@@ -131,8 +134,8 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    font-size: $body_text;
-    line-height: $line_height_body;
+    @include setFont($body_text,$line_height_body);
+    font-weight: $medium;
     .cover{
         height: 56px;
         img{
@@ -147,15 +150,19 @@ body{
         flex-direction: column;
         width: 100%;
         margin-left: 16px;
-        .title{
-            font-weight: $bold;
-        }
         .artist{
-            font-weight: $medium;
             color: $col_sublines;
         }
     }
 
+    .total_time{
+        color: $col_sublines;
+    }
+
+}
+
+.selected{
+    background-color: $col_highlight;
 }
 
 
@@ -170,4 +177,14 @@ body{
             padding: 0 8px;
         }
     }
+}
+
+.footer{
+    @include setFont($caption, 16px);
+    letter-spacing: .15px;
+    font-weight: $medium;
+    color: $col_sublines;
+    padding: 16px;
+    background-color: $col_highlight;
+    border-radius: 0 0 8px 8px;
 }
