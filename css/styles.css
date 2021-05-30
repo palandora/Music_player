@@ -37,7 +37,7 @@ body {
   height: 4px;
 }
 
-.track.current {
+.current_track {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,18 +50,18 @@ body {
   padding: 16px;
 }
 
-.track.current .cover {
-  width: 88px;
+.current_track .cover {
+  height: 88px;
 }
 
-.track.current .cover img {
-  width: 100%;
+.current_track .cover img {
+  height: 100%;
   border-radius: 8px;
   -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.track.current .track_details {
+.current_track .track_details {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,29 +69,29 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
-  padding-left: 16px;
+  width: 100%;
+  margin-left: 16px;
 }
 
-.track.current .track_details .content {
+.current_track .track_details .content {
   padding-bottom: 8px;
 }
 
-.track.current .track_details .content .title, .track.current .track_details .content .artist {
+.current_track .track_details .content .title, .current_track .track_details .content .artist {
   font-size: 16px;
+  line-height: 20px;
 }
 
-.track.current .track_details .content .title {
+.current_track .track_details .content .title {
   font-weight: 700;
 }
 
-.track.current .track_details .content .artist {
+.current_track .track_details .content .artist {
   font-weight: 500;
   color: #8f8f8f;
 }
 
-.track.current .track_details .progressbar {
+.current_track .track_details .progressbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -101,7 +101,7 @@ body {
           flex-direction: column;
 }
 
-.track.current .track_details .progressbar .labels {
+.current_track .track_details .progressbar .labels {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -112,13 +112,17 @@ body {
   margin-bottom: 8px;
 }
 
-.track.current .track_details .progressbar .progressind {
+.current_track .track_details .progressbar .labels span::last-child {
+  color: #8f8f8f;
+}
+
+.current_track .track_details .progressbar .progressind {
   height: 5px;
   border-radius: 2.5px;
   background-color: #efefef;
 }
 
-.track.current .track_details .progressbar .progressind .progress {
+.current_track .track_details .progressbar .progressind .progress {
   position: relative;
   background-color: #6b8cff;
   border-radius: 2.5px 0 0 2.5px;
@@ -126,7 +130,7 @@ body {
   width: 25%;
 }
 
-.track.current .track_details .progressbar .progressind .progress::after {
+.current_track .track_details .progressbar .progressind .progress::after {
   content: "";
   position: absolute;
   right: 0;
@@ -138,6 +142,53 @@ body {
   background-color: #6b8cff;
   border-radius: 50%;
   border: 2.5px solid white;
+}
+
+.track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.track .cover {
+  height: 56px;
+}
+
+.track .cover img {
+  height: 100%;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.track .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-left: 16px;
+}
+
+.track .content .title {
+  font-weight: 700;
+}
+
+.track .content .artist {
+  font-weight: 500;
+  color: #8f8f8f;
 }
 
 .controls {
