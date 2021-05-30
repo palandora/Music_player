@@ -1,5 +1,135 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
+
+$fontFamily: 'Roboto', sans-serif;
+$headings: 16px;
+$body_text: 14px;
+$caption: 12px;
+$bold: 700;
+$medium: 500;
+
+$col_sublines: #8f8f8f;
+$cover_shadow: 0 4px 12px rgba(0,0,0,0.25);
+$col_highlight: #f5f5f5;
+$col_accent: #6b8cff;
+$divider: #efefef;
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    font-family: $fontFamily;
+}
+
+
+.player_container{
+    background-color: white;
+    width: 60%;
+    border-radius: 8px;
+}
+
+.divider{
+    height: 1px;
+    background: $divider;
+    &.extended{
+        height: 4px;
+    }
+}
+
+.track.current{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+
+    .cover{
+        width: 88px;
+        img{
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: $cover_shadow;
+        }
+    }
+
+    .track_details{
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        padding-left: 16px;
+        .content{
+            padding-bottom: 8px;
+
+            .title, .artist{
+                font: {
+                    size: $headings;
+                }
+            }
+            .title{
+                font-weight: $bold;
+            }
+            .artist{
+                font-weight: $medium;
+                color: $col_sublines;
+            }
+        }
+
+        .progressbar{
+            display: flex;
+            flex-direction: column;
+            .labels{
+                display: flex;
+                justify-content: space-between;
+                font-size: $body_text;
+                margin-bottom: 8px;
+            }
+            .progressind{
+                $indHeight: 5px;
+                height: $indHeight;
+                border-radius: $indHeight/2; 
+                background-color: $divider;
+                .progress{
+                    position: relative;
+                    background-color: $col_accent;
+                    border-radius: $indHeight/2 0 0 $indHeight/2;
+                    height: 100%;
+                    width: 25%;
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 12px;
+                        height: 12px;
+                        background-color: $col_accent;
+                        border-radius: 50%;
+                        border: 2.5px solid white;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+.controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    .controls_center{
+        display: flex;
+        span{
+            padding: 0 8px;
+        }
+    }
 }
