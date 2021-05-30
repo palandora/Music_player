@@ -104,6 +104,7 @@ body{
                 }
             }
             .progressind{
+                cursor: pointer;
                 $indHeight: 5px;
                 height: $indHeight;
                 border-radius: $indHeight/2; 
@@ -113,11 +114,12 @@ body{
                     background-color: $col_accent;
                     border-radius: $indHeight/2 0 0 $indHeight/2;
                     height: 100%;
-                    width: 25%;
+                    width: 0%;
+                    transition: width 0.1s linear;
                     &::after{
                         content: "";
                         position: absolute;
-                        right: 0;
+                        left: 95%;
                         top: 50%;
                         transform: translateY(-50%);
                         width: 12px;
@@ -175,6 +177,9 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 16px;
+    span{
+        cursor: pointer;
+    }
     .controls_center{
         display: flex;
         span{
