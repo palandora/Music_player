@@ -1,9 +1,13 @@
 const previousBtn = document.querySelector("#previous")
 const playBtn = document.querySelector("#play")
 const nextBtn = document.querySelector("#next")
+const shuffleBtn = document.querySelector("#shuffle")
 const audio = document.querySelector("audio")
 const progressContainer = document.querySelector(".progressind")
 const progress = document.querySelector(".progress")
+const labelCurrentTime = document.querySelector("#currentTime")
+const labelRemainingTime = document.querySelector("#remainingTime")
+
 const currentTitle = document.querySelector("#current_title")
 const currentArtist = document.querySelector("#current_artist")
 const currentCover = document.querySelector("#current_cover");
@@ -30,6 +34,26 @@ function playSong(){
     audio.play();
 }
 
+function formatTime(time){
+    let seconds = parseInt(time % 60);
+    let minutes = parseInt((time / 60) % 60);
+    return minutes + ':' + seconds ;
+}
+
+function updateProgress(e){
+    //set progressBar
+    let currentTime = e.srcElement.currentTime
+    let duration = e.srcElement.duration
+    let remainingTime = duration - currentTime
+    progress.style.width = `${(currentTime/duration)*100}%`
+    //set label time played
+    labelCurrentTime.innerText = formatTime(currentTime)
+    //set label time remaining
+    currentTime == 0 ? labelRemainingTime.innerText = "00:00" :
+        labelRemainingTime.innerText = formatTime(remainingTime)
+
+}
+
 function pauseSong(){
     playBtn.innerText = "play_arrow";
     audio.pause();
@@ -51,7 +75,12 @@ function prevSong(){
     }
     loadAudio(trackIndex)
     playSong()
+}
 
+function shuffle(){
+    trackIndex = Math.floor(Math.random() * tracks.length)
+    loadAudio(trackIndex)
+    playSong()
 }
 
 
@@ -66,6 +95,8 @@ playBtn.addEventListener("click", ()=>{
     }
 })
 
+audio.addEventListener("timeupdate",updateProgress)
 nextBtn.addEventListener("click",nextSong)
 previousBtn.addEventListener("click",prevSong)
+shuffleBtn.addEventListener("click",shuffle)
 
