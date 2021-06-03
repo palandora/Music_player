@@ -10,30 +10,28 @@ const labelRemainingTime = document.querySelector("#remainingTime")
 const currentTitle = document.querySelector("#current_title")
 const currentArtist = document.querySelector("#current_artist")
 const currentCover = document.querySelector("#current_cover");
-const trackList = document.getElementsByClassName("track")
+const trackList = document.querySelectorAll(".track")
 
 
-let trackIndex = 1;
+let trackIndex = 0;
 
 const tracks = ["Guarda come dondolo","Happy ending","Nel blu dipinto di blu",
     "Piu di te","Un bacio a mezzanotte"]
 const artists = ["Eduardo Vianello", "Alex Cameron", "Marino Marini",
 "Mina", "Quartetto Cetra"]
 
-loadAudio(0)
+loadAudio(trackIndex)
 
-function highlightTracklist(direction){
-    if(direction == "forward"){
-        if(trackIndex != 0) trackList[trackIndex-1].classList.remove("selected")
-        trackList[trackIndex].classList.add("selected")
-    }else{
-        console.log("in")
-        if(trackIndex != tracks.length-1) {
-            console.log("in")
-            trackList[trackIndex+1].classList.remove("selected")
-        }
-        trackList[trackIndex].classList.add("selected")
-    }
+
+
+
+function highlightCurrentTrack(){
+    //highlight cell
+    trackList.forEach(function(track) {
+        if(track.classList.contains("selected")) track.classList.remove("selected") 
+    });
+    trackList[trackIndex].classList.add("selected")
+
 }
 
 
@@ -45,19 +43,19 @@ function loadAudio(trackIndex){
     currentArtist.innerText = artists[trackIndex]
 }
 
-function highlightCurrentTrack(){
-
-}
 
 
 function playSong(){
     playBtn.innerText = "pause";
+    highlightCurrentTrack()
     audio.play();
 }
 
 function formatTime(time){
     let seconds = parseInt(time % 60);
     let minutes = parseInt((time / 60) % 60);
+    if(seconds < 10) seconds = `0${seconds}`
+    if(minutes < 10) minutes = `0${minutes}`
     return minutes + ':' + seconds ;
 }
 
@@ -72,8 +70,13 @@ function updateProgress(e){
     //set label time remaining
     currentTime == 0 ? labelRemainingTime.innerText = "00:00" :
         labelRemainingTime.innerText = formatTime(remainingTime)
+   
+   
     //nextSong
     if(remainingTime==0) nextSong()
+
+
+
 }
 
 function pauseSong(){
@@ -86,7 +89,6 @@ function nextSong(){
     if(trackIndex>tracks.length-1){
         trackIndex = 0;
     }
-    highlightTracklist("forward")
     loadAudio(trackIndex)
     playSong()
 }
@@ -96,10 +98,10 @@ function prevSong(){
     if(trackIndex<0){
         trackIndex = tracks.length-1;
     }
-    highlightTracklist()
     loadAudio(trackIndex)
     playSong()
 }
+
 
 function shuffle(){
     trackIndex = Math.floor(Math.random() * tracks.length)
@@ -127,9 +129,18 @@ playBtn.addEventListener("click", ()=>{
     }
 })
 
+//Event Listener
+
 audio.addEventListener("timeupdate",updateProgress)
 nextBtn.addEventListener("click",nextSong)
 previousBtn.addEventListener("click",prevSong)
 shuffleBtn.addEventListener("click",shuffle)
 progressContainer.addEventListener("mousedown", setProgress)
 
+trackList.forEach((track,index)=>{
+    track.addEventListener("click", ()=>{
+        trackIndex = index
+        loadAudio(trackIndex)
+        playSong()
+    })
+})
